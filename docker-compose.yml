@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./task-manager
     ports:
-      - "3000:3000"
+      - "80:80"
     environment:
       - VITE_REACT_APP_USER_SERVICE_URL=http://localhost:5000/api/users
       - VITE_TASK_SERVICE_URL=http://localhost:5001
@@ -34,7 +34,7 @@ services:
       - mongo
 
   mongo:
-    image: mongo:6.0
+    image: mongo:4.4
     ports:
       - "27017:27017"
     volumes:
