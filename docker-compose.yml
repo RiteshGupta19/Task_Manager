@@ -6,8 +6,10 @@ services:
     ports:
       - "80:80"
     environment:
-      - VITE_REACT_APP_USER_SERVICE_URL=http://localhost:5000/api/users
-      - VITE_TASK_SERVICE_URL=http://localhost:5001
+      - VITE_REACT_APP_USER_SERVICE_URL=http://user-service:5000/api/users
+      - VITE_TASK_SERVICE_URL=http://task-service:5001
+      # - VITE_REACT_APP_USER_SERVICE_URL=http://localhost:5000/api/users
+      # - VITE_TASK_SERVICE_URL=http://localhost:5001
     depends_on:
       - user-service
       - task-service
