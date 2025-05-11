@@ -7,12 +7,13 @@ const cors = require('cors');
 
 const app = express();
 const corsOptions = {
-  origin: 'http://localhost:5173',  // Update this with your frontend URL
+  origin: 'http://3.110.84.68',  
   methods: 'GET,POST,PUT,DELETE',
   credentials: true,
 };
 
 app.use(cors(corsOptions));
+
 connectDB();
 
 app.use(express.json());
