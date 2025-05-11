@@ -16,4 +16,4 @@ app.use('/api/tasks', taskRoutes);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Task service running on port ${PORT}`));
+app.listen(PORT, '0.0.0.0', () => console.log(`Task service running on port ${PORT}`));
