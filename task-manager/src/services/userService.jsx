@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+console.log('User API URL:', import.meta.env.VITE_REACT_APP_USER_SERVICE_URL);
 const API_URL = import.meta.env.VITE_REACT_APP_USER_SERVICE_URL || 'http://localhost:5000/api/users';
 
 const login = async (credentials) => {
