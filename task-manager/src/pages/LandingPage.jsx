@@ -14,7 +14,7 @@ const LandingPage = () => {
         <div style={styles.content}>
           <h1>Welcome to Task Manager</h1>
           <p style={styles.description}>
-            Task Manager help you keep track of your tasks, organize them, and improve your productivity.
+            Task Manager helps you keep track of your tasks, organize them, and improve your productivity.
           </p>
           <h2>Please log in to continue</h2>
           <div style={styles.buttonsContainer}>
