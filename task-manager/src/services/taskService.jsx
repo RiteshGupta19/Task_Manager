@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_TASK_SERVICE_URL || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_REACT_APP_TASK_SERVICE_URL || 'http://localhost:5001';
 
 const getTasks = async (userId) => {
   const response = await axios.get(`${API_URL}/api/tasks?userId=${userId}`, {
