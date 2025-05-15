@@ -8,7 +8,25 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+const allowedOrigins = [
+  'http://taskmanager19.s3-website.ap-south-1.amazonaws.com',
+  'https://d395d44loc2fy0.cloudfront.net',
+  'http://localhost:3000'
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 dotenv.config();
 connectDB();
 
