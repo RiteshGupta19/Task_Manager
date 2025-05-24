@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: user-backend
+  template:
+    metadata:
+      labels:
+        app: user-backend
+    spec:
+      containers:
+        - name: user-backend
+          image: ritesh0419/backend-user:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongo-user-service/TM_UserDB"
+            - name: JWT_SECRET
+              value: "your_jwt_secret"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  selector:
+    app: user-backend
+  ports:
+    - port: 5000
+      targetPort: 5000
