@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: task-backend
+  template:
+    metadata:
+      labels:
+        app: task-backend
+    spec:
+      containers:
+        - name: task-backend
+          image: ritesh0419/backend-user:latest
+          ports:
+            - containerPort: 5001
+          env:
+            - name: MONGO_URI
+              value: "mongodb://mongo-task-service/TM_TaskDB"
+            - name: JWT_SECRET
+              value: "your_jwt_secret"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: task-service
+spec:
+  selector:
+    app: task-backend
+  ports:
+    - port: 5001
+      targetPort: 5001
