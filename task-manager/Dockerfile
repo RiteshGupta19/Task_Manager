@@ -1,28 +1,52 @@
- FROM node:20-alpine AS build
+FROM node:20-alpine
 
- 
+# Set working directory
 WORKDIR /app
 
- 
+# Copy dependency files
 COPY package*.json ./
 
- 
+# Install dependencies
 RUN npm install
 
- 
+# Copy source code
 COPY . .
 
- 
-RUN npm run build
+# Expose the port used by your dev server (Vite = 5173, React = 3000, etc.)
+EXPOSE 5173
+
+# Start the development server
+CMD ["npm", "run", "dev"]
+
+
+
+#  FROM node:20-alpine AS build
 
  
-FROM nginx:alpine
+# WORKDIR /app
 
  
-COPY --from=build /app/dist /usr/share/nginx/html
+# COPY package*.json ./
 
  
-EXPOSE 80
+# RUN npm install
 
  
-CMD ["nginx", "-g", "daemon off;"]
+# COPY . .
+
+ 
+# RUN npm run build
+
+ 
+# # FROM nginx:alpine
+
+ 
+# # COPY --from=build /app/dist /usr/share/nginx/html
+
+ 
+# EXPOSE 80
+
+ 
+
+# # CMD ["nginx", "-g", "daemon off;"]
+# CMD [npm run dev]
